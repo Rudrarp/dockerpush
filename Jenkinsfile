@@ -6,14 +6,14 @@ pipeline {
     stages{
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t rudra8/nodeapp:${DOCKER_TAG} "
+                sh "docker build . -t rudra8/testapp:${DOCKER_TAG} "
             }
         }
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u kammana -p ${dockerHubPwd}"
-                    sh "docker push kammana/nodeapp:${DOCKER_TAG}"
+                    sh "docker login -u rudra8 -p ${dockerHubPwd}"
+                    sh "docker push rudra8/testapp:${DOCKER_TAG}"
                 }
             }
         }
