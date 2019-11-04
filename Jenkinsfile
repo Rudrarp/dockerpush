@@ -11,7 +11,7 @@ pipeline {
         }
         stage('DockerHub Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                withCredentials([string(credentialsId: 'dockerHubpwd', variable: 'dockerHubPwd')]) {
                     sh "docker login -u rudra8 -p ${dockerHubPwd}"
                     sh "docker push rudra8/testapp:${DOCKER_TAG}"
                 }
